@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('authors', 'AuthorController');
+
+    Route::resource('books', 'BookController');
+});
